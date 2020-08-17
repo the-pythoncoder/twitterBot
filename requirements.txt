@@ -1,0 +1,5 @@
+torch
+pytorch-ignite
+transformers
+tensorboardX
+tensorflow  # for tensorboardX
