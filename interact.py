@@ -136,20 +136,14 @@ def run():
     logger.info("Selected personality: %s", tokenizer.decode(chain(*personality)))
 
     history = []
-#    while True:
-#        raw_text = input(">>> ")
-#        while not raw_text:
-#            print('Prompt should not be empty!')
-#            raw_text = input(">>> ")
-#        history.append(tokenizer.encode(raw_text))
-        raw_text = "Hi"
-        history.append(tokenizer.encode(raw_text))
-        with torch.no_grad():
-            out_ids = sample_sequence(personality, history, tokenizer, model, args)
-        history.append(out_ids)
-        history = history[-(2*args.max_history+1):]
-        out_text = tokenizer.decode(out_ids, skip_special_tokens=True)
-        print(out_text)
+    raw_text = "Hi"
+    history.append(tokenizer.encode(raw_text))
+    with torch.no_grad():
+        out_ids = sample_sequence(personality, history, tokenizer, model, args)
+    history.append(out_ids)
+    history = history[-(2*args.max_history+1):]
+    out_text = tokenizer.decode(out_ids, skip_special_tokens=True)
+    print(out_text)
 
 
 if __name__ == "__main__":
